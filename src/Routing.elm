@@ -20,19 +20,5 @@ routeParser =
 
 route : Location -> Route
 route location =
-    let
-        parsedRoute =
-            parseHash routeParser location
-    in
-        case parsedRoute of
-            Just Overview ->
-                Overview
-
-            Just (Item id) ->
-                Item id
-
-            Just NotFound ->
-                NotFound
-
-            Nothing ->
-                NotFound
+    parseHash routeParser location
+        |> Maybe.withDefault NotFound
