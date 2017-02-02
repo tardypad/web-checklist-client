@@ -15,6 +15,7 @@ routeParser =
     oneOf
         [ map Overview (s "lists" </> top)
         , map Item (s "lists" </> int)
+        , map Overview top
         ]
 
 
