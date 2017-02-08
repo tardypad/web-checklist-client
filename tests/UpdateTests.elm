@@ -2,10 +2,10 @@ module UpdateTests exposing (all)
 
 import Test exposing (..)
 import Expect
+import Helpers
 import Update exposing (..)
 import Routing exposing (Route(..))
 import Messages exposing (Msg(..))
-import Navigation exposing (Location)
 
 
 all : Test
@@ -13,22 +13,6 @@ all =
     describe "Update"
         [ updateTest
         ]
-
-
-location : String -> Location
-location urlHash =
-    { href = "https://elm.lang/checklist#" ++ urlHash
-    , host = "elm.lang"
-    , hostname = "elm.lang"
-    , protocol = "https"
-    , origin = "https://elm.lang"
-    , port_ = ""
-    , pathname = "checklist"
-    , search = ""
-    , hash = "#" ++ urlHash
-    , username = ""
-    , password = ""
-    }
 
 
 updateTest : Test
@@ -41,7 +25,7 @@ updateTest =
                         { route = NotFound }
 
                     urlChangeMsg =
-                        UrlChange (location "lists")
+                        UrlChange (Helpers.location "lists")
 
                     expectedModel =
                         { route = Overview }
@@ -56,7 +40,7 @@ updateTest =
                         { route = NotFound }
 
                     urlChangeMsg =
-                        UrlChange (location "unknown")
+                        UrlChange (Helpers.location "unknown")
                 in
                     initialModel
                         |> update urlChangeMsg
