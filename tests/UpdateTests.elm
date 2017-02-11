@@ -28,7 +28,7 @@ updateTest =
                         UrlChange (Helpers.location "lists")
 
                     expectedModel =
-                        { route = Overview }
+                        { route = Collection }
                 in
                     initialModel
                         |> update urlChangeMsg

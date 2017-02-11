@@ -10,11 +10,11 @@ view model =
     let
         url =
             case model.route of
-                Overview ->
-                    "overview"
+                Collection ->
+                    "collection"
 
-                Item id ->
-                    "item " ++ toString id
+                Checklist id ->
+                    "checklist " ++ toString id
 
                 NotFound ->
                     "not found"

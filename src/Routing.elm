@@ -5,17 +5,17 @@ import UrlParser exposing (Parser, (</>), s, int, map, top, oneOf, parseHash)
 
 
 type Route
-    = Overview
-    | Item Int
+    = Collection
+    | Checklist Int
     | NotFound
 
 
 routeParser : Parser (Route -> a) a
 routeParser =
     oneOf
-        [ map Overview (s "lists" </> top)
-        , map Item (s "lists" </> int)
-        , map Overview top
+        [ map Collection (s "lists" </> top)
+        , map Checklist (s "lists" </> int)
+        , map Collection top
         ]
 
 

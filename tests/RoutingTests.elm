@@ -22,21 +22,21 @@ validListId =
 routeTest : Test
 routeTest =
     describe "route"
-        [ test "Home is routed to Overview" <|
+        [ test "Home is routed to Collection" <|
             \_ ->
                 Helpers.location ""
                     |> route
-                    |> Expect.equal Overview
-        , test "Lists is routed to Overview" <|
+                    |> Expect.equal Collection
+        , test "Lists is routed to Collection" <|
             \_ ->
                 Helpers.location "lists"
                     |> route
-                    |> Expect.equal Overview
-        , fuzz validListId "Lists/id is routed to Item id if id is valid" <|
+                    |> Expect.equal Collection
+        , fuzz validListId "Lists/id is routed to Checklist id if id is valid" <|
             \id ->
                 Helpers.location ("lists/" ++ (toString id))
                     |> route
-                    |> Expect.equal (Item id)
+                    |> Expect.equal (Checklist id)
         , test "Lists/id is routed to NotFound if id is invalid" <|
             \_ ->
                 Helpers.location "lists/thisisnotanid"
